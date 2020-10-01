@@ -2,26 +2,32 @@ package br.com.digital_house.desafio_1
 
 class Curso (
         val nome: String,
-        val codCurso: Int,
-        professorTitular: ProfessorTitular,
-        professorAdjunto: ProfessorAdjunto,
+        val codigoCurso: Int,
         var quantidadeMaximaDeAlunos: Int) {
 
-    var listaDeAlunos = mutableSetOf<Int>()
+    lateinit var professorTitular: ProfessorTitular
+    lateinit var professorAdjunto: ProfessorAdjunto
 
-    fun incluirAlunos(vararg codAluno: Int) {
-        var quantidadeDeAlunosParaCadastro = mutableSetOf<Int>()
-        codAluno.forEach { quantidadeDeAlunosParaCadastro.add(it) }
+    var listaDeAlunosCurso = mutableSetOf<Aluno>()
 
-        if (listaDeAlunos.size + quantidadeDeAlunosParaCadastro.size <= quantidadeMaximaDeAlunos) {
-            quantidadeDeAlunosParaCadastro.forEach{listaDeAlunos.add(it)}
+    fun adicionarUmAluno(umAluno: Aluno) :Boolean {
+        if(listaDeAlunosCurso.size < quantidadeMaximaDeAlunos) {
+            listaDeAlunosCurso.add(umAluno)
+            println("O(a) aluno(a) ${umAluno.nome} ${umAluno.sobrenome} foi inserido no curso com sucesso.")
+            return true
         } else {
-            println("O número máximo de alunos nesse curso é de ${quantidadeMaximaDeAlunos}. \n Por favor, reintroduza um número de alunos menor ou igual ao número máximo informado.")
+            println("As ${quantidadeMaximaDeAlunos} vagas deste curso já encontram-se preenchidas. \n Não é possível realizar a inclusão do(a) ${umAluno.nome} ${umAluno.sobrenome} neste momento.")
+            return false
         }
-}
+    }
+
+    fun excluirAluno(umAluno: Aluno) {
+        listaDeAlunosCurso.remove(umAluno)
+        println("O(a) aluno(a) ${umAluno.nome} ${umAluno.sobrenome} foi removido(a) do curso com sucesso.")
+    }
 
     override fun equals(other: Any?): Boolean {
-        return (other is Curso && this.codCurso == other.codCurso)
+        return (other is Curso && this.codigoCurso == other.codigoCurso)
 
     }
 }

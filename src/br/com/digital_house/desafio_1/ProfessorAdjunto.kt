@@ -1,10 +1,7 @@
 package br.com.digital_house.desafio_1
 
-class ProfessorAdjunto (var horasMonitoria: Int,
-                        nome: String,
+class ProfessorAdjunto (nome: String,
                         sobrenome: String,
                         tempoDeCasa: Int,
-                        codProfessor: Int) : Professor(nome, sobrenome, tempoDeCasa, codProfessor) {
-
-
-}
+                        codigoProfessor: Int,
+                        var horasMonitoria: Int) : Professor(nome, sobrenome, tempoDeCasa, codigoProfessor)
