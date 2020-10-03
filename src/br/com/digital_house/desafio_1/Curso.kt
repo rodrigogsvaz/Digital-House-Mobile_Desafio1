@@ -16,7 +16,7 @@ class Curso (
             println("O(a) aluno(a) ${umAluno.nome} ${umAluno.sobrenome} foi inserido no curso com sucesso.")
             return true
         } else {
-            println("As ${quantidadeMaximaDeAlunos} vagas deste curso já encontram-se preenchidas. \n Não é possível realizar a inclusão do(a) ${umAluno.nome} ${umAluno.sobrenome} neste momento.")
+            println("As ${quantidadeMaximaDeAlunos} vagas deste curso já encontram-se preenchidas. \nNão é possível realizar a inclusão do(a) ${umAluno.nome} ${umAluno.sobrenome} neste momento.")
             return false
         }
     }
